@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to The Jungle, <%= @order.id %></h1>
+
+    <% @order_total = 0 %>
+    <% @order.line_items.each do |details| %>
+      <% quantity = details.quantity %>
+
+      <% if product = details.product %>
+        <% item_total = details.product.price * quantity %>
+        <% @order_total += item_total %>
+          <tr>
+            <td>
+              <h4><%= details.product.name %></h4>
+            </td>
+            <td>
+              <%= details.product.price %>
+            </td>
+            <td>
+              <%= details.quantity %>
+            </td>
+            <td>
+              <%= item_total %>
+            </td>
+          </tr>
+      <% end %>
+    <% end %>
+    <p>Thanks for shopping!</p>
+  </body>
+</html>
