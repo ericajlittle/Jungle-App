@@ -30,18 +30,42 @@
     </div>
 
       <div class="col-sm-6">
+
+      <h2>Add a Review:</h2>
+      <% if current_user %>
+      <%= form_for([@product, @review]) do |f| %>
+        <p>
+          <%= f.label :rating %><br>
+          <%= f.number_field :rating %>
+        </p>
+        <p>
+          <%= f.label :description %><br>
+          <%= f.text_area :description %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
+      <% end %>
+      <% end %>
         <h4>User Reviews</h4>
-        <% @product.reviews.each do |review| %>
+
+        <% @product.reviews.reverse.each do |review| %>
           <div>
             <dl class="dl-horizontal">
               <dt>User Name</dt>
-              <dd><%= review.user.email %></dd>
+              <dd> <%= review.user.email %></dd>
               <dt>Review</dt>
               <dd><%= review.description %></dd>
               <dt>Rating</dt>
               <dd><%= review.rating %>/10</dd>
+              <% if current_user.id == review.user_id %>
+              <dd><%= link_to 'Delete Review', [review.product, review],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %></dd>
             </dl>
           </div>
+        <% end %>
+
         <% end %>
       </div>
 
