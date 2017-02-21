@@ -1,18 +1,17 @@
-<h1>Sign Up</h1>
-<!-- <div class="input-group">
-  <span class="input-group-addon" id="basic-addon1">First Name:</span>
-  <input type="text" class="form-control" aria-describedby="basic-addon1">
-  <span class="input-group-addon" id="basic-addon1">Last Name:</span>
-  <input type="text" class="form-control" aria-describedby="basic-addon1">
 
-</div> -->
+<session class="signup">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <h1>Sign Up</h1>
 
-
-<%= form_for :user, url: '/users' do |f| %>
-  First Name: <%= f.text_field :first_name %>
-  Last Name: <%= f.text_field :last_name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
-<% end %>
+      <%= form_for :user, url: '/users' do |f| %>
+        First Name: <%= f.text_field :first_name %>
+        Last Name: <%= f.text_field :last_name %>
+        Email: <%= f.text_field :email %>
+        Password: <%= f.password_field :password %>
+        Password Confirmation: <%= f.password_field :password_confirmation %>
+        <%= f.submit "Submit" %>
+      <% end %>
+    </div>
+  </div>
+</session>

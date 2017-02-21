@@ -8,9 +8,12 @@ main section.categories-show {
     flex-wrap:       wrap;
     justify-content: space-around;
 
+
     .product {
       // flex:      1;
-      max-width: 260px;
+      // max-width: 260px;
+      width: 22%;
+
       // so that footer within can be positioned absolutely
       position:  relative;
 
@@ -87,5 +90,18 @@ main section.products-show {
   }
 }
 
+session.signup,
+session.login {
+  * {
+    margin-bottom: 1em;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    input[type="submit"]{
+      width: 130px;
+    }
+  }
+}
 
 
