@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to The Jungle, <%= @order.id %></h1>
+    <h1>Welcome to The Jungle, your order id is <%= @order.id %></h1>
 
     <% @order_total = 0 %>
     <% @order.line_items.each do |details| %>
@@ -23,11 +23,11 @@
             <td>
               <%= details.quantity %>
             </td>
+            <% end %>
             <td>
-              <%= item_total %>
+              <%= @order_total %>
             </td>
           </tr>
-      <% end %>
     <% end %>
     <p>Thanks for shopping!</p>
   </body>
