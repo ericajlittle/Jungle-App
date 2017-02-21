@@ -28,7 +28,6 @@ RSpec.describe User, type: :model do
   it "user password_confirmation must be presented" do
     @user.password_confirmation = nil
     @user.save
-    p @user
     expect(@user.errors.full_messages).to include("Password confirmation can't be blank")
   end
 
@@ -62,23 +61,31 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     before(:each) do
-     @user = User.new()
-     @user.first_name = "Erica"
-     @user.last_name = "Little"
-     @user.email = "erica@gmail.com"
-     @user.password = "hello"
-     @user.password_confirmation = "hello"
+      @user = User.new()
+      @user.first_name = "Erica"
+      @user.last_name = "Little"
+      @user.email = "erica@gmail.com"
+      @user.password = "hello"
+      @user.password_confirmation = "hello"
+      @user.save
+    end
+
+  it "allow user to login with valid email" do
+    user = User.authenticate_with_credentials("erica@gmail.com", "hello")
+    expect(user).to be_instance_of(User)
   end
 
   it "allow user to login with whitespace" do
-    User.authenticate_with_credentials(" erica@gmail.com ", "hello")
-    expect(@user).to be_nil
+    user = User.authenticate_with_credentials("  erica@gmail.com  ", "hello")
+    expect(user).to be_instance_of(User)
   end
 
+  it "not case sensititve" do
+    user = User.authenticate_with_credentials("EricA@gmail.com", "hello")
+    expect(user).to be_instance_of(User)
   end
+
+
+ end
 
 end
-
-
-#   end
-# end
