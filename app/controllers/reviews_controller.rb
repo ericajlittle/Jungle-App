@@ -7,8 +7,8 @@ before_filter :authorize
     @product = Product.find params[:product_id]
     @review = @product.reviews.new(review_params)
     @review.user_id = current_user.id if current_user
-     if @review.save!
-    redirect_to product_path(@product)
+      if @review.save!
+      redirect_to product_path(@product)
     else
       redirect :back
     end
