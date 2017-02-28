@@ -36,7 +36,7 @@
       <%= form_for([@product, @review]) do |f| %>
         <p>
           <%= f.label :rating %><br>
-          <%= f.number_field :rating %>
+          <%= f.select :rating, options_for_select([1, 2, 3, 4, 5]) %>
         </p>
         <p>
           <%= f.label :description %><br>
@@ -49,6 +49,7 @@
       <% end %>
         <h4>User Reviews</h4>
 
+
         <% @product.reviews.reverse.each do |review| %>
           <div>
             <dl class="dl-horizontal">
@@ -57,7 +58,7 @@
               <dt>Review</dt>
               <dd><%= review.description %></dd>
               <dt>Rating</dt>
-              <dd><%= review.rating %>/10</dd>
+              <dd><%= review.rating %>/5</dd>
               <% if current_user == review.user %>
               <dd><%= link_to 'Delete Review', [review.product, review],
                method: :delete,

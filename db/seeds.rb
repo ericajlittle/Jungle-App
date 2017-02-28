@@ -33,6 +33,8 @@ cat3 = Category.find_or_create_by! name: 'Furniture'
 
 puts "Re-creating Products ..."
 
+LineItem.destroy_all
+
 Product.destroy_all
 
 product1 = cat1.products.create!({
@@ -132,20 +134,22 @@ cat3.products.create!({
   price: 2_483.75
 })
 
-user1 = User.create!(first_name: "Brenda", last_name: "June", email: "bj@gmail.com", password: "hi", password_confirmation: "hi")
-user2 = User.create!(first_name: "Joe", last_name: "Jo", email: "joe@gmail.com", password: "hi", password_confirmation: "hi")
-user3 = User.create!(first_name: "Jim", last_name: "jim", email: "Jim@gmail.com", password: "hi", password_confirmation: "hi")
-user4 = User.create!(first_name: "Bob", last_name: "Bobby", email: "bob@gmail.com", password: "hi", password_confirmation: "hi")
-user5 = User.create!(first_name: "Billy", last_name: "Bil", email: "bill@gmail.com", password: "hi", password_confirmation: "hi")
-user6 = User.create!(first_name: "Sam", last_name: "Sammy", email: "sam@gmail.com", password: "hi", password_confirmation: "hi")
+User.destroy_all
+
+user1 = User.create!(first_name: "Brenda", last_name: "June", email: "bj@gmail.com", password: "12345678", password_confirmation: "12345678")
+user2 = User.create!(first_name: "Joe", last_name: "Jo", email: "joe@gmail.com", password: "12345678", password_confirmation: "12345678")
+user3 = User.create!(first_name: "Jim", last_name: "jim", email: "Jim@gmail.com", password: "12345678", password_confirmation: "12345678")
+user4 = User.create!(first_name: "Bob", last_name: "Bobby", email: "bob@gmail.com", password: "12345678", password_confirmation: "12345678")
+user5 = User.create!(first_name: "Billy", last_name: "Bil", email: "bill@gmail.com", password: "12345678", password_confirmation: "12345678")
+user6 = User.create!(first_name: "Sam", last_name: "Sammy", email: "sam@gmail.com", password: "12345678", password_confirmation: "12345678")
 
 Review.destroy_all
 
-product1.reviews.create!({user: user1, description: "great", rating: 10})
-product1.reviews.create!({user: user2, description: "super", rating: 9})
-product1.reviews.create!({user: user3, description: "awesome", rating: 11})
+product1.reviews.create!({user: user1, description: "great", rating: 4})
+product1.reviews.create!({user: user2, description: "super", rating: 3})
+product1.reviews.create!({user: user3, description: "awesome", rating: 2})
 product1.reviews.create!({user: user4, description: "bad", rating: 1})
-product1.reviews.create!({user: user5, description: "lame", rating: 14})
-product1.reviews.create!({user: user6, description: "omg", rating: 12})
+product1.reviews.create!({user: user5, description: "lame", rating: 5})
+product1.reviews.create!({user: user6, description: "omg", rating: 2})
 
 puts "DONE!"
